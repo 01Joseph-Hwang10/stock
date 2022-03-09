@@ -1,0 +1,14 @@
+# Virtual Environment
+bin
+lib
+pyvenv.cfg
+
+# Python
+__pycache__
+*.pyc
+
+# Private
+private
+
+# Credentials
+credentials.*
