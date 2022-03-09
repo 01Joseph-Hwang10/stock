@@ -1,0 +1,3 @@
+[주가 <Price-Status> 알림]
+
+<Item-Name> 주의 가격이 <Price-Status-Detail> 하여 <Description>

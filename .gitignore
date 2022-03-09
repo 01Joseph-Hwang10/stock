@@ -7,8 +7,9 @@ pyvenv.cfg
 __pycache__
 *.pyc
 
-# Private
+# Exceptions
 private
-
-# Credentials
 credentials.*
+
+# Configuration file
+config.json

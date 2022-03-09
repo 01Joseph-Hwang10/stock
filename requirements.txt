@@ -1,2 +1,5 @@
 requests
 flask
+click
+apscheduler
+flask_sqlalchemy
