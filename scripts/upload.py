@@ -11,7 +11,8 @@ URL = urljoin(SERVER_URL, '/config/upload')
 def upload_config():
     env = use_env()
     headers = {
-        'Authorization': env.secret_key
+        'Authorization': env.secret_key,
+        'Content-Type': 'application/json',
     }
     data = {
         "config": use_config()

@@ -19,3 +19,6 @@ static
 
 # Config File
 config.json
+
+# DB
+db.sqlite3

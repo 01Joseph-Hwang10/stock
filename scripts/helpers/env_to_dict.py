@@ -24,5 +24,5 @@ def use_env() -> Env:
     with open(env_path, 'r') as f:
         env_raw = f.read()
     env = Env()
-    Array(env_raw.split('\n')).filter(lambda x: len(x) > 0).map(lambda x: x.split('=')).forEach(lambda x: setattr(env, '_%s' % x[0].lower(), x[1]))
+    Array(env_raw.split('\n')).filter(lambda x: len(x) > 0).map(lambda x: x.split('=')).forEach(lambda x: setattr(env, '_%s' % x[0].lower(), str(x[1])))
     return env

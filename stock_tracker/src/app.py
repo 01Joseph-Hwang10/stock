@@ -4,6 +4,7 @@ from stock_tracker.src.db.main import init_db
 from stock_tracker.src.scheduler.jobs.main import start_jobs
 from stock_tracker.src.routes.main import bp as main
 from stock_tracker.src.routes.config import bp as config
+from scripts.set_dev_env import load_env
 
 def init_app():
     app = Flask(__name__)
@@ -21,5 +22,5 @@ def init_app():
     return app
 
 def init_app_dev():
-    import scripts.set_dev_env
+    load_env()
     return init_app()

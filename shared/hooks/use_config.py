@@ -1,6 +1,5 @@
 import os
 import json
-import string
 from typing import List, TypedDict
 from shared.utils.constants import ROOT
 
@@ -8,11 +7,11 @@ config_path = os.path.join(ROOT, 'config.json')
 
 class Target(TypedDict):
 
-    market: string
+    market: str
     """주식이 속한 시작 (KOSPI, KOSDAQ, ...)"""
-    code: string
+    code: str
     """주식 코드"""
-    name: string
+    name: str
     """주식 이름"""
     goal: List[int]
     """목표 주가 (여러개 가능)"""
