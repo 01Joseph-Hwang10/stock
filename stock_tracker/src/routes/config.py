@@ -27,4 +27,4 @@ def upload():
         err = {
             "message": traceback.print_exc(),
         }
-        return Response(status=HTTPStatus.INTERNAL_SERVER_ERROR, response=err)
+        return Response(status=HTTPStatus.INTERNAL_SERVER_ERROR, response=json.dumps(err))
