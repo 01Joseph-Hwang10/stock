@@ -2,7 +2,6 @@ import json
 from flask import Blueprint
 from http import HTTPStatus
 from flask import Response
-import traceback
 from flask import request
 from stock_tracker.src.decorators.auth_guard import auth_guard
 from shared.hooks.use_config import config_path
@@ -23,8 +22,8 @@ def upload():
         with open(config_path, 'w') as f:
             f.write(json.dumps(config, indent=2))
         return Response(status=HTTPStatus.OK)
-    except:
+    except Exception as e:
         err = {
-            "message": traceback.print_exc(),
+            "message": str(e),
         }
         return Response(status=HTTPStatus.INTERNAL_SERVER_ERROR, response=json.dumps(err))
