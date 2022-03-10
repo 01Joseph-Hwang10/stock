@@ -19,7 +19,7 @@ def upload_config():
     data = {
         "config": use_config()
     }
-    response = requests.post(SERVER_URL, headers=headers, data=data)
+    response = requests.post(URL, headers=headers, data=data)
     try:
         assert response.status_code == HTTPStatus.OK
         print('Upload was successful!')
