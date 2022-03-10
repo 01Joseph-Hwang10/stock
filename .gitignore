@@ -11,5 +11,5 @@ __pycache__
 private
 credentials.*
 
-# Configuration file
-config.json
+# Static files
+static

@@ -2,8 +2,9 @@ import os
 import json
 import string
 from typing import List, TypedDict
+from apps.shared.utils.constants import STATIC
 
-config_path = os.path.join(os.path.dirname(__file__), '..', 'config.json')
+config_path = os.path.join(STATIC, 'config.json')
 
 class Target(TypedDict):
 
@@ -26,6 +27,7 @@ class Credentials(TypedDict):
 class Env(TypedDict):
 
     debug: bool
+    secretKey: str
 
 class Config(TypedDict):
     target: List[Target]

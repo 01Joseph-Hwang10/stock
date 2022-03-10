@@ -1,8 +1,8 @@
 import requests
-from typing import List, Optional, Tuple, TypedDict
-from src.stock_tracker.endpoints import NaverEndpoint
-from src.hooks.use_config import use_config, Config
-from src.hooks.use_safe_request import use_safe_request
+from typing import List, Tuple
+from apps.shared.hooks.use_config import use_config, Config
+from apps.shared.hooks.use_safe_request import use_safe_request
+from apps.stock_tracker.src.stock_tracker.endpoints import NaverEndpoint
 
 class EvaluatedStockInfo:
     current_price: int

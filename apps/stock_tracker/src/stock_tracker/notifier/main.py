@@ -1,10 +1,10 @@
 import requests
-from src.stock_tracker.extract_stock_info import EvaluatedStockInfo
-from src.stock_tracker.notifier.template import create_template
-from src.stock_tracker.extract_stock_info import extract_stock_info
-from src.stock_tracker.endpoints import KakaoEndpoint, NaverEndpoint
-from src.hooks.use_config import use_config, Config
-from src.hooks.use_safe_request import use_safe_request
+from apps.stock_tracker.src.stock_tracker.extract_stock_info import EvaluatedStockInfo
+from apps.stock_tracker.src.stock_tracker.notifier.template import create_template
+from apps.stock_tracker.src.stock_tracker.extract_stock_info import extract_stock_info
+from apps.stock_tracker.src.stock_tracker.endpoints import KakaoEndpoint, NaverEndpoint
+from apps.shared.hooks.use_config import use_config, Config
+from apps.shared.hooks.use_safe_request import use_safe_request
 
 def notify(stock_info: EvaluatedStockInfo) -> None:
     template = create_template(stock_info)

@@ -1,5 +1,5 @@
 from typing import Any
-from src.db.main import get_db
+from apps.stock_tracker.src.db.main import get_db
 
 
 def save(instance: Any) -> None:

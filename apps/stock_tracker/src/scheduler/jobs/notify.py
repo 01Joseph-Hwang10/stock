@@ -1,5 +1,5 @@
-from src.stock_tracker.notifier.main import notify_all
 from datetime import datetime
+from apps.stock_tracker.src.stock_tracker.notifier.main import notify_all
 
 def notify():
     now = datetime.now()

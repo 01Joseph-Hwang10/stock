@@ -1,4 +1,4 @@
-from src.db.main import db
+from apps.stock_tracker.src.db.main import db
 
 class Market:
     KOSPI = 0

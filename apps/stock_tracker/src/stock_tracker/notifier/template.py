@@ -1,9 +1,9 @@
 import os
 from src.stock_tracker.extract_stock_info import EvaluatedStockInfo
-from src.utils.constants import STATIC
+from apps.shared.utils.constants import STATIC
 from src.stock_tracker.notifier.decide_case import decide_case
 
-template_path = os.path.join(STATIC, 'kakao-talk-template.txt')
+template_path = os.path.join(STATIC, 'template.txt')
 
 PRICE_STATUS = '<Price-Status>'
 ITEM_NAME = '<Item-Name>'

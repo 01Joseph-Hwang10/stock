@@ -1,7 +1,7 @@
 from typing import Tuple
-from src.stock_tracker.extract_stock_info import EvaluatedStockInfo
-from src.db.models.stock import Stock, Market
-from src.db.save import save
+from apps.stock_tracker.src.stock_tracker.extract_stock_info import EvaluatedStockInfo
+from apps.stock_tracker.src.db.models.stock import Stock, Market
+from apps.stock_tracker.src.db.save import save
 
 """
 Example:
