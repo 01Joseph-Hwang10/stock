@@ -18,7 +18,13 @@ Request Body : {
 @auth_guard
 def upload():
     try:
-        config = request.get_json()['config']
+        data = request.form
+        config = None
+        if len(data.keys()) != 0:
+            config = data['config']
+        data = request.json
+        if len(data.keys()) != 0:
+            config = data['config']
         with open(config_path, 'w') as f:
             f.write(json.dumps(config, indent=2))
         return Response(status=HTTPStatus.OK)
