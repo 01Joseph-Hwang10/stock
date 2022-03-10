@@ -21,4 +21,5 @@ static
 config.json
 
 # DB
-db.sqlite3
+*.sqlite
+*.sqlite3
