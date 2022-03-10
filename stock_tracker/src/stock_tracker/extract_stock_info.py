@@ -1,7 +1,7 @@
 import requests
 from typing import List, Tuple
-from stock_tracker.src.hooks.use_config import use_config
-from stock_tracker.src.hooks.use_safe_request import use_safe_request
+from shared.hooks.use_config import use_config
+from shared.hooks.use_safe_request import use_safe_request
 from stock_tracker.src.stock_tracker.endpoints import NaverEndpoint
 
 class EvaluatedStockInfo:
@@ -37,7 +37,7 @@ class EvaluatedStockInfo:
     
 
 def extract_stock_info() -> List[EvaluatedStockInfo]:
-    _, config = use_config()
+    config = use_config()
     result: List[EvaluatedStockInfo] = []
     for target in config['target']:
         response = use_safe_request(requests.get(NaverEndpoint.stock_info(target['code'])))

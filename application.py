@@ -1,1 +1,3 @@
-from stock_tracker.main import application
+from stock_tracker.src.app import init_app
+
+application = init_app()

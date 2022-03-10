@@ -1,10 +1,10 @@
 import os
 import json
 import string
-from typing import List, Optional, TypedDict
-from stock_tracker.src.utils.constants import STATIC
+from typing import List, TypedDict
+from shared.utils.constants import ROOT
 
-config_path = os.path.join(STATIC, 'config.json')
+config_path = os.path.join(ROOT, 'config.json')
 
 class Target(TypedDict):
 
@@ -24,20 +24,19 @@ class Credentials(TypedDict):
     kakaoAuthorization: str
     """카카오 API 토큰 + 인증 정보 ("Bearer {Access Token}")"""
 
-class Env(TypedDict):
-
-    debug: bool
-    secretKey: str
-
 class Config(TypedDict):
     target: List[Target]
     credentials: Credentials
-    env: Env
 
-def use_config() -> Optional[Config]:
+"""
+:param :raw bool - True: return raw json, False: return dict
+"""
+def use_config(raw = False) -> Config:
     try:
         with open(config_path, 'r') as f:
-            config = json.loads(f.read())
+            config = f.read()
+            if not raw:
+                config = json.loads(config)
         return config
     except:
         return None

@@ -1,14 +1,14 @@
+import os
 import functools
 import flask
-from stock_tracker.src.hooks.use_config import use_config
-
-config = use_config()
+from http import HTTPStatus
 
 def authorized(data: dict) -> bool:
     if not data:
         return False
     authorization = data['headers']['Authorization']
-    if config['env']['secretKey'] == authorization:
+    secret_key = os.environ.get('SECRET_KEY')
+    if secret_key == authorization:
         return True
     return False
     
@@ -19,6 +19,6 @@ def auth_guard(f):
     # Do something with your request here
     data = flask.request.get_json()
     if not authorized(data):
-      flask.abort(400)
+      flask.abort(HTTPStatus.BAD_REQUEST)
     return f(*args, **kwargs)
   return decorated_function

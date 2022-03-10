@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "stock"
+version = "0.1.0"
+description = ""
+authors = ["01Joseph-Hwang10 <joseph95501@gmail.com>"]
+
+[tool.poetry.scripts]
+dev = "stock_tracker.src.app:init_app_dev"
+health-check = "scripts.health_check:main"
+upload = "scripts.upload:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+APScheduler = "3.9.1"
+certifi = "2021.10.8"
+charset-normalizer = "2.0.12"
+click = "8.0.4"
+Flask = "2.0.3"
+Flask-SQLAlchemy = "2.5.1"
+idna = "3.3"
+itsdangerous = "2.1.0"
+Jinja2 = "3.0.3"
+MarkupSafe = "2.1.0"
+pytz = "2021.3"
+pytz-deprecation-shim = "0.1.0.post0"
+requests = "2.27.1"
+six = "1.16.0"
+SQLAlchemy = "1.4.32"
+tzdata = "2021.5"
+tzlocal = "4.1"
+urllib3 = "1.26.8"
+Werkzeug = "2.0.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

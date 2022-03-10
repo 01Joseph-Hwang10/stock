@@ -13,3 +13,9 @@ credentials.*
 
 # Static files
 static
+
+# Environment Variables
+*.env
+
+# Config File
+config.json

@@ -15,7 +15,7 @@ DESCRIPTION = '<Description>'
 
 def create_template(stock_info: EvaluatedStockInfo):
     template = get_template()
-    case, current_price = decide_case()
+    case, current_price = decide_case(stock_info)
     _, met_goal = stock_info.met_goal()
     _, met_bep = stock_info.met_bep()
     if case == 0:

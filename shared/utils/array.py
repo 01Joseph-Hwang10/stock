@@ -15,3 +15,7 @@ class Array(Generic[T]):
 
     def filter(self, cb: Callable[[T], bool]):
         return Array([item for item in self.source if cb(item)])
+
+    def forEach(self, cb: Callable[[T], Any]):
+        for item in self.source:
+            cb(item)
