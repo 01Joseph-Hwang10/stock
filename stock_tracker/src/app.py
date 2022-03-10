@@ -4,13 +4,13 @@ from scripts.set_dev_env import load_env
 from stock_tracker.src.db.main import init_db
 from stock_tracker.src.routes.main import bp as main
 from stock_tracker.src.routes.config import bp as config
-from stock_tracker.src.scheduler.main import init_scheduler
+from stock_tracker.src.scheduler.main import scheduler
 
 def init_app():
     app = Flask(__name__)
 
     init_db(app)
-    init_scheduler()
+    scheduler.init()
 
     app.register_blueprint(main)
     app.register_blueprint(config)

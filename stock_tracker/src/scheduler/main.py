@@ -1,25 +1,36 @@
 import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
-from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
+from apscheduler.job import Job
 from stock_tracker.src.scheduler.jobs.notify import notify
+from stock_tracker.src.scheduler.config import jobstores, executors, job_defaults
 
-jobstores = {
-    "default": SQLAlchemyJobStore(url="sqlite:///jobs.sqlite")
-}
-executors = {
-    'default': ThreadPoolExecutor(20),
-    'processpool': ProcessPoolExecutor(5)
-}
-job_defaults = {
-    'coalesce': False,
-    'max_instances': 3
-}
+class Scheduler:
 
-scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors, job_defaults=job_defaults)
+    notify_job: Job
 
-def init_scheduler():
-    notify_job = scheduler.add_job(notify, 'interval', minutes=5)
-    atexit.register(lambda: notify_job.remove())
-    scheduler.start()
-    print("Scheduler started")
+    def __init__(self):
+        self.scheduler = BackgroundScheduler(jobstores=jobstores, executors=executors, job_defaults=job_defaults)
+
+    def init(self):
+        # Register Jobs
+        self.notify_job = self.scheduler.add_job(notify, 'interval', minutes=5)
+        atexit.register(lambda: self.notify_job.remove())
+        
+        # Start Scheduler
+        self.scheduler.start()
+        print("Scheduler started")
+    
+    def get_job_status(self, job: Job) -> str:
+        print(job)
+        if not bool(job):
+            return 'Not Initialized'
+        if bool(job.next_run_time):
+            return 'Running'
+        return 'Not Running'
+
+    def status_of(self, job_name: str) -> str:
+        if job_name == 'notify':
+            return self.get_job_status(self.notify_job)
+        return 'Job Not Found'
+
+scheduler = Scheduler()
