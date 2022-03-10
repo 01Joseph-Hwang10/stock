@@ -4,6 +4,7 @@ from shared.hooks.use_config import use_config
 
 def notify():
     config = use_config()
+    print(f'Notify all users')
     if not bool(config):
         return
     now = datetime.now()
@@ -13,4 +14,5 @@ def notify():
         return
     if now.hour > 15:
         return
+    print(f'Executing Notification Job')
     notify_all()
