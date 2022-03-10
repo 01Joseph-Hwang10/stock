@@ -11,4 +11,7 @@ headers = {
 
 def main():
     response = requests.get(SERVER_URL, headers=headers)
-    assert response.status_code == HTTPStatus.OK
+    if response.status_code == HTTPStatus.OK:
+        print('The server is healthy!')
+    else:
+        print('The server is not healthy! (Status Code : %d)' % response.status_code)
