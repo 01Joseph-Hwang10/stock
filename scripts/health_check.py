@@ -10,7 +10,7 @@ headers = {
 }
 
 def main(expected = HTTPStatus.OK) -> bool:
-    response = requests.get(SERVER_URL, headers=headers)
+    response = requests.get(SERVER_URL, headers=headers, timeout=5)
     print('Status Code : %d' % response.status_code)
     print('Response : ')
     try:

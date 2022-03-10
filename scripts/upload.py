@@ -36,7 +36,8 @@ def push_code():
 
 def main():
     push_code()
-    while True:
+    print('Wating For the health check...')
+    for _ in range(10):
         sleep(1000)
         if health_check():
             break
