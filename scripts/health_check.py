@@ -1,4 +1,5 @@
 import requests
+from http import HTTPStatus
 from scripts.helpers.env_to_dict import use_env
 from shared.utils.constants import SERVER_URL
 
@@ -8,11 +9,13 @@ headers = {
     'Authorization': env.secret_key
 }
 
-def main():
+def main(expected = HTTPStatus.OK) -> bool:
     response = requests.get(SERVER_URL, headers=headers)
     print('Status Code : %d' % response.status_code)
     print('Response : ')
     try:
-        print(response.json())
+        response = response.json()
+        return response['is_healthy']
     except:
         print(response.content)
+    return response.status_code == expected

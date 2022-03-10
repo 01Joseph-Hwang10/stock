@@ -14,9 +14,9 @@ Request Body : {
     config: Config,
 }
 """
-@bp.route('/upload', methods=['GET', 'POST'])
+@bp.route('/upload', methods=['POST'])
 @auth_guard
-def upload_config():
+def upload():
     try:
         config = request.get_json()['config']
         with open(config_path, 'w') as f:
