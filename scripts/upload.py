@@ -1,5 +1,5 @@
-from os import wait
 import requests
+from time import sleep
 from subprocess import Popen
 from http import HTTPStatus
 from urllib.parse import urljoin
@@ -37,7 +37,7 @@ def push_code():
 def main():
     push_code()
     while True:
-        wait(1000)
+        sleep(1000)
         if health_check():
             break
     upload_config()

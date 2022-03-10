@@ -15,6 +15,7 @@ def main(expected = HTTPStatus.OK) -> bool:
     print('Response : ')
     try:
         response = response.json()
+        print(response)
         return response['is_healthy']
     except:
         print(response.content)
