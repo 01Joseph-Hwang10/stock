@@ -4,7 +4,6 @@ from http import HTTPStatus
 from flask import Response
 from flask import request
 from stock_tracker.src.decorators.auth_guard import auth_guard
-from shared.hooks.use_config import use_config
 from shared.hooks.use_config import config_path
 
 bp = Blueprint('config', __name__, url_prefix='/config')
@@ -15,7 +14,7 @@ Request Body : {
     config: Config,
 }
 """
-@bp.route('/upload', methods=['POST'])
+@bp.route('/upload', methods=['GET', 'POST'])
 @auth_guard
 def upload_config():
     try:

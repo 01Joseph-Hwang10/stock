@@ -3,9 +3,9 @@ from subprocess import Popen
 from http import HTTPStatus
 from urllib.parse import urljoin
 from shared.hooks.use_config import use_config
-from shared.utils.constants import SERVER_URL
 from scripts.helpers.env_to_dict import use_env
 
+SERVER_URL = 'http://stock-env.eba-hirrdtdm.ap-northeast-2.elasticbeanstalk.com/'
 URL = urljoin(SERVER_URL, '/config/upload')
 
 def upload_config():
@@ -18,8 +18,13 @@ def upload_config():
         "config": use_config()
     }
     response = requests.post(SERVER_URL, headers=headers, data=data)
-    print(response.content)
-    assert response.status_code == HTTPStatus.OK
+    try:
+        assert response.status_code == HTTPStatus.OK
+        print('Upload was successful!')
+    except:
+        print('Upload was failed! (Status Code : %d)' % response.status_code)
+        print('Response : ')
+        print(response.content)
 
 def push_code():
     commit_name = input('> Please input your commit name : ')
