@@ -45,7 +45,7 @@ def extract_stock_info() -> List[EvaluatedStockInfo]:
         result.append(EvaluatedStockInfo({
             'current_price': price,
             'goal': target['goal'],
-            'bep': target['bep'],
+            'bep': target['BEP'],
             'code': target['code'],
             'name': target['name'],
             'market': target['market'],

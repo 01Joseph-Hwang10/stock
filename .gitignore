@@ -21,5 +21,9 @@ static
 config.json
 
 # DB
+jobs.sqlite
 *.sqlite
 *.sqlite3
+
+# Lock Files
+*.lock

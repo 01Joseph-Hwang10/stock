@@ -1,3 +1,4 @@
+import unittest
 import click
 from stock_tracker.src.app import init_app_dev
 from scripts.health_check import main as do_health_check
@@ -30,9 +31,18 @@ def upload(command):
     else:
         do_upload()
 
+@click.command()
+@click.argument('module', nargs=1)
+def test(module):
+    import importlib
+    importlib.import_module('tests.%s' % module)
+    if __name__ == '__main__':
+        unittest.main()
+
 cli.add_command(dev)
 cli.add_command(health_check)
 cli.add_command(upload)
+cli.add_command(test)
 
 if __name__ == '__main__':
     cli()
